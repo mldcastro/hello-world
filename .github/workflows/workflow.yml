@@ -23,6 +23,11 @@ jobs:
     services:
         postgres_db:
           image: postgres
+          env:
+            POSTGRES_USER: postgres
+            POSTGRES_HOSTNAME: postgres
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_DATABASE: postgres
           ports:
             - 5432:5432
           options: >-
@@ -39,14 +44,10 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
-          echo Add other actions to build,
+          source <(echo ${{ secrets.TEST_ENV }} | base64 --decode)
           echo ${{ secrets.TEST_SECRET }} | base64 --decode 
             > test_file.txt
           cat $TEST_SECRET
           echo $POSTGRES_USER
         env:
           TEST_SECRET: test_file.txt
-          POSTGRES_USER: postgres
-          POSTGRES_HOSTNAME: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DATABASE: postgres
