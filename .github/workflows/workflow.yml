@@ -51,3 +51,4 @@ jobs:
           echo $POSTGRES_USER
         env:
           TEST_SECRET: test_file.txt
+          POSTGRES_USER: postgres
