@@ -23,11 +23,6 @@ jobs:
     services:
         postgres_db:
           image: postgres
-          env:
-            POSTGRES_USER: postgres
-            POSTGRES_HOSTNAME: postgres
-            POSTGRES_PASSWORD: postgres
-            POSTGRES_DATABASE: postgres
           ports:
             - 5432:5432
           options: >-
@@ -51,3 +46,7 @@ jobs:
           echo $POSTGRES_USER
         env:
           TEST_SECRET: test_file.txt
+          POSTGRES_USER: postgres
+          POSTGRES_HOSTNAME: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DATABASE: postgres
