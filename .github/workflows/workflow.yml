@@ -29,7 +29,7 @@ jobs:
       - name: Run a multi-line script
         run: |
           echo Add other actions to build,
-          cat ${{ secrets.TEST_SECRET }} > test_file.txt
+          echo ${{ secrets.TEST_SECRET }} > test_file.txt
           echo $TEST_SECRET
         env:
           TEST_SECRET: test_file.txt
