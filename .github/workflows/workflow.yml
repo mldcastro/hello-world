@@ -30,6 +30,6 @@ jobs:
         run: |
           echo Add other actions to build,
           echo ${{ secrets.TEST_SECRET }} > test_file.txt
-          echo $TEST_SECRET
+          cat $TEST_SECRET
         env:
           TEST_SECRET: test_file.txt
