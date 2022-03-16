@@ -52,7 +52,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
-          echo ${{ secrets.TEST_SECRET }} | base64 --decode 
+          echo blabla
             > test_file.txt
           cat $TEST_SECRET
           echo $POSTGRES_USER
