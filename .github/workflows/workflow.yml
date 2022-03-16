@@ -54,7 +54,7 @@ jobs:
         run: |
           echo blabla
             > test_file.txt
-          cat $TEST_SECRET
+          echo $TEST_SECRET
           echo $POSTGRES_USER
         env:
           TEST_SECRET: test_file.txt
