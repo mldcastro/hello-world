@@ -41,7 +41,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       
-      - name: Bla
+      - name: Using source
         run: |
           source <(echo ${{ secrets.TEST_ENV }} | base64 --decode)
           echo ${{ secrets.TEST_SECRET }} | base64 --decode 
