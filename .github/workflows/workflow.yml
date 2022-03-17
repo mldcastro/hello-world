@@ -49,8 +49,9 @@ jobs:
           cat $TEST_SECRET
           echo $POSTGRES_USER
           
-      - name: Testing if source works on this step
+      - name: Testing if previous source works on this step
         run: |
+          source <(echo ${{ secrets.TEST_ENV }} | base64 --decode)
           echo $POSTGRES_USER
           echo $RANDOM_VAR
 
