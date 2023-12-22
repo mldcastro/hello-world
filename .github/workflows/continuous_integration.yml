@@ -1,5 +1,11 @@
 name: Continuous Integration
-on: [push]
+
+on:
+  # push:
+  #   branches: [main]
+
+  pull_request:
+    branches: [main]
 
 jobs:
   print_random_stuff:
@@ -17,3 +23,11 @@ jobs:
           echo "------------------------------"
           echo "RUNNING CONTINUOUS INTEGRATION"
           echo "------------------------------"
+
+      # - name: Fail step
+      #   run: |
+      #     echo "------------------------------"
+      #     echo "THIS STEP WILL FAIL"
+      #     echo "------------------------------"
+
+      #     exit 1
