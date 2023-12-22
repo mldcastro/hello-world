@@ -1,0 +1,46 @@
+name: Open release pull request
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_version:
+        description: "Release Version"
+        required: true
+
+jobs:
+  run:
+    name: Open release pull request
+    runs-on: ubuntu-latest
+
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Poetry
+        run: |
+          python -m pip install --upgrade poetry
+
+      - name: Configure git user
+        run: |
+          git config user.name "$(git --no-pager log --format=format:'%an' -n 1)"
+          git config user.email "$(git --no-pager log --format=format:'%ae' -n 1)"
+
+      - name: Create Release Branch
+        run: |
+          git branch "releases/${{ github.event.inputs.release_version }}"
+          git checkout "releases/${{ github.event.inputs.release_version }}"
+
+      - name: Update Version and Commit
+        run: |
+          poetry version "${{ github.event.inputs.release_version }}"
+          git add pyproject.toml
+          git commit --message "${{ github.event.inputs.release_version }}"
+
+      - name: Push branch
+        run: git push --set-upstream origin "releases/${{ github.event.inputs.release_version }}"
+      
+      - name: Create pull request
+        run: gh pr create --title "Release ${{ github.event.inputs.release_version }}" --body "Update the package's version."
