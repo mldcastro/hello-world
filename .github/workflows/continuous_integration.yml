@@ -1,11 +1,11 @@
 name: Continuous Integration
 
-on: [push]
-  # push:
-  #   branches: [main]
+on:
+  push:
+    branches: [main]
 
-  # pull_request:
-  #   branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
   print_random_stuff:
