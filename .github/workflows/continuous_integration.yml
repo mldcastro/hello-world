@@ -17,3 +17,11 @@ jobs:
           echo "------------------------------"
           echo "RUNNING CONTINUOUS INTEGRATION"
           echo "------------------------------"
+      
+      - name: Fail step
+        run: |
+          echo "------------------------------"
+          echo "THIS STEP WILL FAIL"
+          echo "------------------------------"
+
+          exit 1
