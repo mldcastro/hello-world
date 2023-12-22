@@ -1,0 +1,19 @@
+name: Continuous Integration
+on: [push]
+
+jobs:
+  print_random_stuff:
+    name: Print random statements
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: 'actions/checkout@v4'
+      - uses: 'actions/setup-python@v4'
+        with:
+          python-version: "3.11"
+
+      - name: Print text
+        run: |
+          echo "------------------------------"
+          echo "RUNNING CONTINUOUS INTEGRATION"
+          echo "------------------------------"
