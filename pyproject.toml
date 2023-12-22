@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "hello-world"
+version = "0.1.0"
+description = "Test"
+authors = []
+
+[tool.poetry.dependencies]
+python = "~3.11"
+
+[tool.poetry.dev-dependencies]
+black = "23.3.0"
+pytest = "~7.3.1"
+pytest-dotenv = "~0.5.2"
+flake8 = "~3.8.4"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
